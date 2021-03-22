@@ -75,11 +75,12 @@ namespace MediaLibrary
                         else if (choice == "3")
                         {
                             Console.WriteLine("Enter movie you are searching for.");
-                            string search = Console.ReadLine();
+                            string search = Console.ReadLine().ToLower();
+                            
                             // LINQ - Where filter operator & Select projection operator & Contains quantifier operator
-                             var titles = movieFile.Movies.Where(m => m.title.Contains(search)).Select(m => m.title);
+                             var titles = movieFile.Movies.Where(m => m.title.ToLower().Contains((search))).Select(m => m.title);
                             // LINQ - Count aggregation method
-                            Console.WriteLine($"There are {titles.Count()} movies with \"Shark\" in the title:");
+                            Console.WriteLine($"There are {titles.Count()} movies with \"{search}\" in the title:");
                             foreach(string t in titles)
                             {
                                 Console.WriteLine($"  {t}");

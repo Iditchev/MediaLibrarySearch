@@ -23,6 +23,15 @@ namespace MediaLibrary
 
             String resp = Console.ReadLine();
 
+            if (resp == "1")
+            {
+                 // Display All Movies
+                    foreach(Movie m in movieFile.Movies)
+                    {
+                        Console.WriteLine(m.Display());
+                    }
+            }
+
             Console.ForegroundColor = ConsoleColor.Green;
 
             // LINQ - Where filter operator & Contains quantifier operator

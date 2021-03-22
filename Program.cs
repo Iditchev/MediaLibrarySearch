@@ -66,15 +66,28 @@ namespace MediaLibrary
                         movieFile.AddMovie(movie);
             }
 
-            Console.ForegroundColor = ConsoleColor.Green;
-
-            // LINQ - Where filter operator & Contains quantifier operator
-            var Movies = movieFile.Movies.Where(m => m.title.Contains("(1990)"));
-            // LINQ - Count aggregation method
-            Console.WriteLine($"There are {Movies.Count()} movies from 1990");
+            if (resp == "3")
+            {
+                Console.WriteLine("Enter movie you are searching for.");
+                string search = Console.ReadLine();
+                // LINQ - Where filter operator & Select projection operator & Contains quantifier operator
+                var titles = movieFile.Movies.Where(m => m.title.Contains(search)).Select(m => m.title);
+                // LINQ - Count aggregation method
+                Console.WriteLine($"There are {titles.Count()} movies with \"Shark\" in the title:");
+                 foreach(string t in titles)
+                {
+                Console.WriteLine($"  {t}");
+                 }     
+            }
+        else 
+        {
+            Console.WriteLine("Goodbye");
+        }
+            
 
 
             logger.Info("Program ended");
+            }
         }
     }
 }
